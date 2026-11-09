@@ -2,18 +2,19 @@
 
 ## GitHub repository
 
-Use `obsidian-attachment-cards` as the repository name. Suggested description:
+Repository: [wing-zlatan/obsidian-attachment-cards](https://github.com/Wing-zlatan/obsidian-attachment-cards).
 
-> Compact, clickable attachment cards for Obsidian, with file-type icons and native image display.
+Description:
 
-Create an empty public GitHub repository, then set its URL as `origin` and push the local `main` branch. Use the URL shown by GitHub for your account; do not initialize a second README or license remotely.
+> Recognizable attachment cards for readable notes. Keep existing embeds, complete filenames and native media.
+
+Push validated commits to the existing repository:
 
 ```sh
-git remote add origin <your-github-repository-url>
-git push -u origin main
+git push origin main
 ```
 
-## Release 0.1.1
+## Release 0.1.2
 
 Run from a clean, committed repository:
 
@@ -22,35 +23,35 @@ node --check main.js
 python scripts/package_release.py
 ```
 
-Create a GitHub Release with tag **`0.1.1`**, targeting the committed `main` branch. The tag must match `manifest.json` exactly, without a `v` prefix.
+Create a GitHub Release with tag **`0.1.2`**, targeting the committed `main` branch. The tag must match `manifest.json` exactly, without a `v` prefix. Keep previous release tags and assets intact.
 
-Upload these files from `dist/0.1.1/` individually:
+Upload these files from `dist/0.1.2/` individually:
 
 - `main.js`
 - `manifest.json`
 - `styles.css`
 
-Also upload `attachment-cards-0.1.1.zip` for manual installation. `obsidian-attachment-cards-0.1.1-source.zip` is an optional source snapshot; it does not replace the separate install assets.
+The packaging script also creates installation and source ZIPs for local delivery. Only the three files above are uploaded as release assets; GitHub provides source archives automatically, and Obsidian does not use additional ZIP assets.
 
-Suggested release title: **Attachment Cards 0.1.1**
+Release title: **Attachment Cards 0.1.2**
 
 Suggested release body:
 
-> Compact attachment cards with file-type icons for PDF, Word, Excel, PowerPoint, plain text and other attachments. Click to open; images keep their native display. Works with existing embeds in Reading view and Live Preview.
+> More compact attachment cards with complete filenames. Keep dates, revision labels and extensions visible while writing. Native audio and video players remain available alongside images and embedded notes.
 >
-> This release adds PowerPoint and plain-text icons. For manual installation, extract the install ZIP into your vault's `.obsidian/plugins/` directory and enable Attachment Cards. See the README for details.
+> Install or update Attachment Cards through Obsidian's Community plugins settings. Existing Markdown stays unchanged. See the README for the before/after example and manual installation.
 
 ## Obsidian Community directory
 
-Publishing a GitHub repository or release does not automatically list the plugin in Obsidian.
+The existing entry is [Attachment Cards](https://community.obsidian.md/plugins/attachment-cards). A new version does not need a new entry.
 
-After the public repository and release are available:
+After the GitHub release is available:
 
-1. Sign in to [Obsidian Community](https://community.obsidian.md) with an Obsidian account and connect the GitHub account that owns the repository.
-2. Select **New plugin**, enter the public repository URL and submit the entry.
-3. Resolve the directory's review feedback before publishing the listing.
+1. Open the existing plugin's management page and select **Check for new releases**.
+2. Confirm the new version and inspect its automated review results.
+3. Update the listing description and screenshots when the release changes its presentation.
 
-Keep `manifest.json` on the repository's default branch accurate. The plugin ID must remain `attachment-cards` and must be unique in the directory; recheck availability before the initial submission.
+Keep `manifest.json` on the repository's default branch accurate. The plugin ID remains `attachment-cards`.
 
 The manifest currently permits mobile installation, but runtime verification has only covered Windows. Avoid claiming verified mobile support in the listing.
 

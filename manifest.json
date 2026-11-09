@@ -1,9 +1,9 @@
 {
   "id": "attachment-cards",
   "name": "Attachment Cards",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "minAppVersion": "1.5.0",
-  "description": "Display embedded attachments as compact, clickable file cards with file-type icons.",
+  "description": "Make PDF and document attachments easy to spot with compact file cards, using your existing embeds.",
   "author": "wing-zlatan",
   "isDesktopOnly": false
 }

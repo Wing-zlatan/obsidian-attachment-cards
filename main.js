@@ -1,14 +1,15 @@
 const { Plugin, TFile, Notice, setIcon, parseLinktext } = require('obsidian');
 
-// 图片与笔记保留原生内容视图，其余附件统一使用文件卡片。
+// 图片、笔记和音视频保留原生内容视图，文档附件使用文件卡片。
 const NATIVE_EXTENSIONS = new Set([
   'md', 'canvas', 'base', 'excalidraw',
   'avif', 'bmp', 'gif', 'heic', 'heif', 'ico', 'jpeg', 'jpg', 'png', 'svg', 'tif', 'tiff', 'webp',
+  'flac', 'm4a', 'mp3', 'ogg', 'wav', '3gp', 'mkv', 'mov', 'mp4', 'ogv', 'webm',
 ]);
 
 function fileKind(extension) {
   if (extension === 'pdf') return { kind: 'pdf', label: 'PDF', icon: 'file-text' };
-  if (['doc', 'docx', 'docs'].includes(extension)) return { kind: 'word', label: 'W', icon: 'file-text' };
+  if (['doc', 'docx'].includes(extension)) return { kind: 'word', label: 'W', icon: 'file-text' };
   if (['xls', 'xlsx'].includes(extension)) return { kind: 'excel', label: 'X', icon: 'sheet' };
   if (['ppt', 'pptx'].includes(extension)) return { kind: 'powerpoint', label: 'P', icon: 'presentation' };
   if (extension === 'txt') return { kind: 'text', label: 'TXT', icon: 'file-text' };
@@ -111,7 +112,7 @@ module.exports = class AttachmentCards extends Plugin {
     card.className = 'attachment-card';
     card.setAttribute('role', 'link');
     card.tabIndex = 0;
-    card.setAttribute('aria-label', `打开 ${file.name}`);
+    card.setAttribute('aria-label', file.name);
     card.title = file.name;
     const badge = card.createSpan({ cls: 'attachment-card-icon' });
     badge.setAttribute('aria-hidden', 'true');
@@ -131,6 +132,9 @@ module.exports = class AttachmentCards extends Plugin {
     const open = event => {
       event.preventDefault();
       event.stopImmediatePropagation();
+      // 从正文拖选经过附件时保持选择，不把选中文字解释成打开文件。
+      const selection = card.ownerDocument.defaultView.getSelection();
+      if (event.type === 'click' && selection && !selection.isCollapsed && selection.containsNode(card, true)) return;
       void this.app.workspace.openLinkText(link, source, event.ctrlKey || event.metaKey)
         .catch(error => {
           console.error('Attachment Cards: 打开附件失败', error);

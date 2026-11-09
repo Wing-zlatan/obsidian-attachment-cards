@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2
+
+- Make short-file cards more compact and show long filenames in full, including version suffixes and extensions.
+- Preserve native audio and video players alongside images and notes.
+- Keep text selections across cards from opening an attachment accidentally.
+- Remove the mistaken Word extension and use wing-zlatan as the author.
+- Add a before/after writing example and community-first installation instructions.
+
 ## 0.1.1
 
 - Add orange PowerPoint icons for `.ppt` and `.pptx` attachments.
