@@ -18,7 +18,7 @@ Compact, clickable attachment cards for Obsidian. Keep your existing embeds and 
 | Type | Extensions | Icon color |
 | --- | --- | --- |
 | PDF | `.pdf` | Red |
-| Word | `.doc`, `.docx`, `.docs` | Blue |
+| Word | `.doc`, `.docx` | Blue |
 | Excel | `.xls`, `.xlsx` | Green |
 | PowerPoint | `.ppt`, `.pptx` | Orange |
 | Plain text | `.txt` | Slate blue |

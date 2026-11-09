@@ -11,7 +11,7 @@
 | 类型 | 扩展名 | 图标颜色 |
 | --- | --- | --- |
 | PDF | `.pdf` | 红色 |
-| Word | `.doc`、`.docx`、`.docs` | 蓝色 |
+| Word | `.doc`、`.docx` | 蓝色 |
 | Excel | `.xls`、`.xlsx` | 绿色 |
 | PowerPoint | `.ppt`、`.pptx` | 橙色 |
 | 纯文本 | `.txt` | 灰蓝色 |
