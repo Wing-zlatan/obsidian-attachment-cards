@@ -1,7 +1,6 @@
 import argparse
 import json
 import re
-import shutil
 import subprocess
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
@@ -28,12 +27,17 @@ def main():
     destination = args.output.resolve() / version
     destination.mkdir(parents=True, exist_ok=True)
     assets = ('main.js', 'manifest.json', 'styles.css')
-    for name in assets:
-        shutil.copyfile(root / name, destination / name)
+    # 从提交读取原始字节，避免 Windows 工作区换行转换造成两个发布包不一致。
+    content = {
+        name: subprocess.run(['git', 'show', f'HEAD:{name}'], cwd=root, capture_output=True, check=True).stdout
+        for name in assets
+    }
+    for name, data in content.items():
+        (destination / name).write_bytes(data)
     install_zip = destination / f'{plugin_id}-{version}.zip'
     with ZipFile(install_zip, 'w', compression=ZIP_DEFLATED) as archive:
         for name in assets:
-            archive.write(root / name, f'{plugin_id}/{name}')
+            archive.writestr(f'{plugin_id}/{name}', content[name])
     source_zip = destination / f'obsidian-attachment-cards-{version}-source.zip'
     subprocess.run(['git', 'archive', '--format=zip', '--prefix=obsidian-attachment-cards/', f'--output={source_zip}', 'HEAD'], cwd=root, check=True)
 
@@ -43,11 +47,11 @@ def main():
         if set(archive.namelist()) != expected:
             raise RuntimeError('Unexpected install ZIP contents')
         for name in assets:
-            if archive.read(f'{plugin_id}/{name}') != (root / name).read_bytes():
+            if archive.read(f'{plugin_id}/{name}') != content[name]:
                 raise RuntimeError(f'Install asset mismatch: {name}')
     with ZipFile(source_zip) as archive:
         for name in assets:
-            if archive.read(f'obsidian-attachment-cards/{name}') != (root / name).read_bytes():
+            if archive.read(f'obsidian-attachment-cards/{name}') != content[name]:
                 raise RuntimeError(f'Source archive mismatch: {name}')
     print(json.dumps({'version': version, 'output': str(destination), 'assets': list(assets), 'install_zip': install_zip.name, 'source_zip': source_zip.name}, ensure_ascii=False, indent=2))
 
