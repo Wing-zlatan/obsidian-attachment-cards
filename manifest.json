@@ -1,0 +1,9 @@
+{
+  "id": "attachment-cards",
+  "name": "Attachment Cards",
+  "version": "0.1.1",
+  "minAppVersion": "1.5.0",
+  "description": "Display embedded attachments as compact, clickable file cards with file-type icons.",
+  "author": "ZMY",
+  "isDesktopOnly": false
+}

@@ -1,0 +1,9 @@
+/.build/
+/dist/
+/node_modules/
+/.obsidian/
+/.test-vault/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

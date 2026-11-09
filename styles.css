@@ -1,0 +1,85 @@
+/* 限定到本插件的附件，避免主题对嵌入内容的全行宽度和 PDF 高度影响卡片。 */
+body .internal-embed.attachment-card-embed {
+  display: inline-flex !important;
+  vertical-align: middle;
+  box-sizing: border-box !important;
+  width: min(400px, 100%) !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 8px 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  background: none !important;
+  box-shadow: none !important;
+  text-align: left !important;
+  overflow: visible !important;
+  cursor: default;
+}
+
+body .attachment-card-embed > :not(.attachment-card) { display: none !important; }
+body .attachment-card-embed::before,
+body .attachment-card-embed::after { display: none !important; }
+
+body .attachment-card-embed > .attachment-card {
+  --attachment-color: #657083;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
+  min-height: 76px;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  border: 1px solid var(--background-modifier-border, #d8dce3);
+  border-radius: 8px;
+  background: var(--background-primary, #fff);
+  color: var(--text-normal, #202530);
+  font-family: var(--font-text);
+  font-size: 0.8em;
+  line-height: 1.5;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+body .attachment-card-embed[data-attachment-kind="pdf"] > .attachment-card { --attachment-color: #d73535; }
+body .attachment-card-embed[data-attachment-kind="word"] > .attachment-card { --attachment-color: #2463c5; }
+body .attachment-card-embed[data-attachment-kind="excel"] > .attachment-card { --attachment-color: #18824c; }
+body .attachment-card-embed[data-attachment-kind="powerpoint"] > .attachment-card { --attachment-color: #c75124; }
+body .attachment-card-embed[data-attachment-kind="text"] > .attachment-card { --attachment-color: #526b88; }
+body .attachment-card-embed > .attachment-card:hover {
+  border-color: var(--attachment-color);
+  background: var(--background-primary-alt, #f7f8fa);
+}
+body .attachment-card-embed > .attachment-card:focus-visible {
+  outline: 2px solid var(--attachment-color);
+  outline-offset: 3px;
+}
+body .attachment-card .attachment-card-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 48px;
+  gap: 1px;
+  border-radius: 5px;
+  background: var(--attachment-color);
+  color: #fff;
+}
+body .attachment-card .attachment-card-symbol { display: flex; }
+body .attachment-card .attachment-card-symbol svg { width: 23px; height: 23px; stroke-width: 1.7; }
+body .attachment-card .attachment-card-type { font: 700 10px/1.1 var(--font-interface); }
+body .attachment-card .attachment-card-name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  min-width: 0;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  font-weight: 500;
+}
