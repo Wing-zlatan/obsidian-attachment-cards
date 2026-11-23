@@ -77,7 +77,7 @@ node --check main.js
 python scripts/package_release.py
 ```
 
-Packaging requires Python 3.10+, Node.js and Git. It verifies the version metadata, creates an install ZIP and standalone release assets under `dist/0.1.2/`, and exports the committed source with `git archive`. Commit the finished changes before packaging; the script refuses a dirty repository.
+Packaging requires Python 3.10+, Node.js and Git. It verifies the version metadata, creates an install ZIP and standalone release assets under `dist/0.1.3/`, and exports the committed source with `git archive`. Commit the finished changes before packaging; the script refuses a dirty repository.
 
 See [publishing instructions](docs/publishing.md) and [runtime verification](tests/README.md).
 

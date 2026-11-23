@@ -1,7 +1,7 @@
 {
   "id": "attachment-cards",
   "name": "Attachment Cards",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "minAppVersion": "1.5.0",
   "description": "Make PDF and document attachments easy to spot with compact file cards, using your existing embeds.",
   "author": "wing-zlatan",

@@ -3,10 +3,11 @@ body .internal-embed.attachment-card-embed {
   display: inline-flex;
   vertical-align: middle;
   box-sizing: border-box;
-  width: min(400px, 100%);
+  /* PDF 预览会写入行内高度，主题也会指定全宽；卡片尺寸由自身内容决定。 */
+  width: min(400px, 100%) !important;
   max-width: 100%;
   min-width: 0;
-  height: auto;
+  height: auto !important;
   min-height: 0;
   max-height: none;
   margin: 4px 0;

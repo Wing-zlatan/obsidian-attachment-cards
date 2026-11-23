@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3
+
+- Fix large blank gaps between consecutive PDF cards in Live Preview. Each embed now takes up only the space its card needs.
+
 ## 0.1.2
 
 - Make short-file cards more compact and show long filenames in full, including version suffixes and extensions.

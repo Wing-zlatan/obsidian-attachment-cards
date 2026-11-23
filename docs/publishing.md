@@ -14,7 +14,7 @@ Push validated commits to the existing repository:
 git push origin main
 ```
 
-## Release 0.1.2
+## Release 0.1.3
 
 Run from a clean, committed repository:
 
@@ -23,9 +23,9 @@ node --check main.js
 python scripts/package_release.py
 ```
 
-Create a GitHub Release with tag **`0.1.2`**, targeting the committed `main` branch. The tag must match `manifest.json` exactly, without a `v` prefix. Keep previous release tags and assets intact.
+Create a GitHub Release with tag **`0.1.3`**, targeting the committed `main` branch. The tag must match `manifest.json` exactly, without a `v` prefix. Keep previous release tags and assets intact.
 
-Upload these files from `dist/0.1.2/` individually:
+Upload these files from `dist/0.1.3/` individually:
 
 - `main.js`
 - `manifest.json`
@@ -33,11 +33,11 @@ Upload these files from `dist/0.1.2/` individually:
 
 The packaging script also creates installation and source ZIPs for local delivery. Only the three files above are uploaded as release assets; GitHub provides source archives automatically, and Obsidian does not use additional ZIP assets.
 
-Release title: **Attachment Cards 0.1.2**
+Release title: **Attachment Cards 0.1.3**
 
 Suggested release body:
 
-> More compact attachment cards with complete filenames. Keep dates, revision labels and extensions visible while writing. Native audio and video players remain available alongside images and embedded notes.
+> Fixed large blank gaps between consecutive PDF cards in Live Preview. Each PDF embed now takes up only the space its card needs.
 >
 > Install or update Attachment Cards through Obsidian's Community plugins settings. Existing Markdown stays unchanged. See the README for the before/after example and manual installation.
 
